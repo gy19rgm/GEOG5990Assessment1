@@ -5,19 +5,19 @@ Spyder Editor
 @author: gy19rgm
 """
 
+# Import packages
 import matplotlib
 matplotlib.use('TkAgg')
 import tkinter
-
 import matplotlib.pyplot
 import agentframework
 import csv
 import random
 import matplotlib.animation
-
 import requests
 import bs4
 
+# Obtain data from HTML file and allocate to y, x, variables
 r = requests.get("https://www.geog.leeds.ac.uk/courses/computing/practicals/python/agent-framework/part9/data.html", verify=False)
 content = r.text
 soup = bs4.BeautifulSoup(content, 'html.parser')
@@ -27,11 +27,11 @@ td_xs = soup.find_all(attrs={"class": "x"})
 #print(td_ys)
 #print(td_xs)
 
-# This can be used to check we are calling agentframework sufficiently
+# Check the agentframework is being called successfully 
 #a = agentframework.Agent()
 #print("Agent (y,x):", a.y, a.x)
 
-# Open text file
+# Open the environment .txt file
 with open('in.txt', newline='') as f:   # everything indented is instruction, automatically closes
 #    f = open('in.txt', newline='') 
     reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
