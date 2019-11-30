@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 
-@author: gy19rgm
+@author: gy19rgm, University of Leeds
 
 """
-import random
 
+# import statements
+import random
 
 '''
 Class Agent (sheep)
@@ -40,7 +41,7 @@ class Agent ():
             closest_dog.append([distance, self.dogs[i].x, self.dogs[i].y],)
         closest_dog.sort() # sort so smallest distance first
         
-        return closest_dog[0] # return information for closest dog
+        return closest_dog[0] # return information for the closest dog
     
     '''
     Move away from sheep dog or move randomly
@@ -91,7 +92,7 @@ class Agent ():
     '''
     Eat grass and remove from environment
     '''                            
-    def eat(self): # eat the grass
+    def eat(self):
         if self.environment[self.y][self.x] > 10: # if grass has unit > 10
             self.environment[self.y][self.x] -= 10 # eat 10 units of grass
             self.store += 10 # give to personal store
@@ -99,7 +100,7 @@ class Agent ():
     '''
     Returns distance between self and other sheep (agent)
     '''           
-    def distance_between(self, agent): # calculatee distance between self and other sheep
+    def distance_between(self, agent): # calculate distance between self and other sheep
         return (((self.x - agent.x)**2) + ((self.y - agent.y)**2))**0.5        
     
     '''
@@ -109,13 +110,11 @@ class Agent ():
         self.neighbourhood = neighbourhood
         # Loop through the agents in self.agents
         for agent in self.agents:
-            # Calculate the distance between self and the current other agent
             distance = self.distance_between(agent)
             # If distance is less than or equal to the neighbourhood
             if distance <= neighbourhood:
-                # Sum self.store and agent.store
+                # calculate combined store and share equally
                 sum = self.store + agent.store
-                # Divide sum by two to calculate average
                 average = sum / 2
                 self.store = average
                 agent.store = average
@@ -134,20 +133,24 @@ class Dog(Agent):
     @x              x value from HTML file opened in Model.py
     '''
     def __init__(self, environment, agents, dogs, y, x):
-        super().__init__(environment, agents, dogs)
+        super().__init__(environment, agents, dogs) # inherit from class Agent
         
         self.y = y # define y from y defined by HTML file in Model.py
         self.x = x # define x from x defined by HTML file in Model.py
-        if (y == None):# if no y value is found
+        if y == None:# if no y value is found
             self.y = random.randint(0,299) # assign random value to y
         else:
             self.y = y # else use y
-        if (x == None): # if no x value is found
+        if x == None: # if no x value is found
             self.x = random.randint(0,299) # assign random value to x
         else:
             self.x = x # else use x
 
-    def check_vicinity(self): # dog check field to find closest sheep
+    '''
+    Check field to return information about closest sheep
+    '''
+    def check_vicinity(self):
+       
         closest_sheep = [] # set up list called closest sheep
         
         for i in range(len(self.agents)): # for self calculate distance of all sheep
@@ -157,7 +160,10 @@ class Dog(Agent):
         
         return closest_sheep[0] # return information for closest dog
 
-    def move(self): # define how dog moves    
+    '''
+    Move towards sheep (via sprint then stalk motion) or move randomly
+    '''
+    def move(self):  
         
         closest = self.check_vicinity() # closest = sheep from check_vicinity
      

@@ -1,23 +1,23 @@
 # -*- coding: utf-8 -*-
 """
-Spyder Editor
 
-@author: gy19rgm
+@author: gy19rgm, University of Leeds
+
 """
 
-# Import packages
+# import statements
+import agentframework
+import bs4
+import csv
 import matplotlib
 matplotlib.use('TkAgg')
-import tkinter
-import matplotlib.pyplot
-import agentframework
-import csv
-import random
 import matplotlib.animation
+import matplotlib.pyplot
 import requests
-import bs4
+import tkinter
 
-# Obtain data from HTML file and allocate to yx, variables
+
+# obtain data from HTML file and allocate to yx, variables
 r = requests.get("https://www.geog.leeds.ac.uk/courses/computing/practicals/python/agent-framework/part9/data.html", verify=False)
 content = r.text
 soup = bs4.BeautifulSoup(content, 'html.parser')
@@ -27,38 +27,36 @@ td_xs = soup.find_all(attrs={"class": "x"})
 #print(td_ys)
 #print(td_xs)
 
-# Check the agentframework is being called successfully 
+## check the agentframework is being called successfully 
 #a = agentframework.Agent()
 #print("Agent (y,x):", a.y, a.x)
 
-# Open the environment .txt file
-with open('in.txt', newline='') as f:   # everything indented is instruction, automatically closes
-#    f = open('in.txt', newline='') 
+# open the field/environment data from in.txt file
+with open('in.txt', newline='') as f: # automatically closes due to indentation
     reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
     
-    # Lines here happen before any data is processed
     environment = []
     
-    for row in reader:				# A list of rows
-        # Lines here happen before each row is processed
+    for row in reader:
         rowlist = []
         for value in row:
-            # do something with values.
             rowlist.append(value)
-        # Lines here happen before after row is processed
         environment.append(rowlist)
 
+# set figure size and axes
 fig = matplotlib.pyplot.figure(figsize=(7, 7))
 ax = fig.add_axes([0, 0, 1, 1])
 
-dogs = []
-agents = []
-num_of_iterations = 650
+agents = [] # list of agents
+dogs = [] # list of dogs
+num_of_iterations = 150
 num_of_agents = 10
 num_of_dogs = 2
-neighbourhood = 20      # distance sheep can see
+neighbourhood = 20 # distance sheep can see
 
-# Set up sheep and sheepdogs using values from sliders
+'''
+Set up Class Agent (sheep) and Class Dogs (sheepdogs) using values from GUI sliders
+'''
 def setup_agents():
     global num_of_agents
     global num_of_dogs
@@ -69,22 +67,24 @@ def setup_agents():
     
     # Make the sheep
     for i in range(num_of_agents):
- 
         agents.append(agentframework.Agent(environment, agents, dogs))           
-#        print('agents:', agents[i])
+        #print('agents:', agents[i])
         
-    # Check sheep can return info about a different sheep
-    #print(agents[1].agents[6].x)
+#    # check sheep can return info about a different sheep
+#    print(agents[1].agents[6].x)
 
-    # Make the dogs
+    # Make the sheep dogs
     for i in range(num_of_dogs):
         y = int(td_ys[i].text)
         x = int(td_xs[i].text)
         dogs.append(agentframework.Dog(environment, agents, dogs, y, x))    
-#        print('dogs:', dogs[i])
+        #print('dogs:', dogs[i])
 
 carry_on = True
 
+'''
+What to do every iteration XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+'''
 def update(frame_number):
     fig.clear()
     global carry_on
@@ -92,58 +92,59 @@ def update(frame_number):
     matplotlib.pyplot.xlim(300, 0)
     matplotlib.pyplot.imshow(environment)
 
-    # Make the environment ('grass') grow each iteration     
+    # make the environment ('grass') grow each iteration     
     for i in range(300):
         for j in range(300):
-            environment[j][i] += 5
+            environment[j][i] += 2
     
-#    print(len(agents), num_of_agents)
+    #print(len(agents), num_of_agents)
     for i in range(num_of_agents):
-        # Call methods from agentframework.py 
+        # call methods from agentframework.py 
         agents[i].check_field()
         agents[i].move()
         agents[i].eat()
         agents[i].share_with_neighbours(neighbourhood)
         
     for i in range(num_of_dogs):
+        # call methods from agentframework.py 
         dogs[i].check_vicinity()
         dogs[i].move()
-        
-        # This can stop iterations before total expected iterations are met     
-    #    if random.random() < 0.01:
-    #        carry_on = False
-    #        print("stopping condition")
-    
-        # Stop before num_of_ iterations if agents' stores are all greater than a value
-        if agents[i].store > 600:
+          
+        # stop before num_of_iterations if agents' stores are all greater than a value
+        if agents[i].store > 1400:
             carry_on = False
             print("stopping condition")
-
+            
     for i in range(num_of_agents):
         matplotlib.pyplot.scatter(agents[i].x,agents[i].y, c = "white")
 
     for i in range(num_of_dogs):
         matplotlib.pyplot.scatter(dogs[i].x,dogs[i].y, marker = "D", c = "black")
 
-        
-
+'''
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx      
+'''
 def gen_function(b = [0]):
     a = 0
-    global carry_on # Not actually needed as we're not assigning, but clearer
+    global carry_on
     while (a < num_of_iterations) & (carry_on) :
         yield a # Returns control and waits next call
         a = a + 1
     print("stopping iteration number:", a)
-#    # Check final agent.store value
-#    for a in agents:
-#        print("store:", a.store)
+    ## check final agent.store value
+    #for a in agents:
+    #    print("store:", a.store)
 
-# Run model
+'''
+Run Model
+'''
 def run():
     animation = matplotlib.animation.FuncAnimation(fig, update, frames=gen_function, repeat=False)
     canvas.draw()
 
-# Close model
+'''
+Close Model
+'''
 def close():
     root.destroy()
    
@@ -159,25 +160,21 @@ menubar.add_cascade(label="Model", menu=model_menu)
 model_menu.add_command(label="Run model", command=run, state="normal")
 model_menu.add_command(label="Close model", command=close)
 
-# Add a slider for user to choose the number of sheep
+# Add sliders and buttons to GUI
 slide1= tkinter.Scale(root, bd=5, from_=50, label= "1. Choose the number of sheep:", 
                       length=200, orient='horizontal', resolution=1, to=150)
 slide1.pack(fill='x')
 
-# Add a slider for user to choose the number of dogs
 slide2= tkinter.Scale(root, bd=5, from_=5, label= "2. Choose the number of sheepdogs:",
                       length=200, orient='horizontal', resolution=1, to=10)
 slide2.pack(fill='x')
                       
-# Add button get values of sheep and dogs from slider
 butt1=tkinter.Button(root, command= setup_agents, text= "3. Press here to set up the field")
 butt1.pack(fill='x')
 
-# Add button to run model
 butt2=tkinter.Button(root, command=run, text="4. Watch the sheepdog herd the sheep!")
 butt2.pack(fill='x')
 
-# Add button to close model
 butt3=tkinter.Button(root, command=close, text="Close the model")
 butt3.pack(fill='x')
 
