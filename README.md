@@ -14,8 +14,7 @@ This is an Agent Based Model in which sheep and sheepdogs interact within a 300 
 Download the entire repository onto your personal computer in order to run
 
 ### Running the model
-* The model can be run from the  command prompt by navigating to the current working directory and typing 'python Model.py
-* Alternatively, the model can be run from within a programming software, such as Spyder
+The model can be run from the  command prompt by navigating to the current working directory and typing 'python Model.py'. Alternatively, the model can be run from within a programming software, such as Spyder.
 
 ### Expectations
 Upon opening the model, a blank GUI will appear. From here, the number of sheep and sheepdogs can be selected by adjusting the sliders and the model can be run from either the drop down menu or the "4. Watch the sheepdog herd the sheep!" button. The animation will end when either a. total number of iterations are reached or, b. all sheep's personal stores reach a pre-determined capacity.
