@@ -16,9 +16,9 @@ This model was created in Spyder (Anaconda3). The version of python is version i
 
 ### Prerequisites
 Download the relevant files from this repository into your personal folder
-* Model.py 				main model
-* agentframework.py		agent framework
-* in.txt				text file used to append values for field environment 
+* Model.py - main model which initiates the agent-based model animation using numbers obtained from the GUI
+* agentframework.py - agent framework which sets up the agents (sheep) and sheepdogs and their relevant behaviours
+* in.txt - text file containint integers used to set up the values of the field environment 
 
 If using Spyder, the backend may need to be changed in order for matplotlib to render graphics succesfully. This can be set in Spyder by selecting 'Tools' > 'Preferences' > IPython console > 'Graphics' > adjust the backend drop-down list to read TkInter > OK > Restart Spyder
 
