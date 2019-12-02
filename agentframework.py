@@ -24,7 +24,7 @@ class Agent ():
         self.environment = environment
         self.agents = agents 
         self.dogs = dogs
-        self.store = 0  # sets initial agent store as zero
+        self.store = 0  # sets initial agent (sheep) store as zero
         
     def __str__(self): # defines how to return info about self
         return str(self.y) + " " + str(self.x)  

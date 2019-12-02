@@ -5,7 +5,7 @@
 
 """
 
-# import statements
+# import libraries
 import agentframework
 import bs4
 import csv
@@ -83,7 +83,7 @@ def setup_agents():
 carry_on = True
 
 '''
-What to do every iteration XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+On each iteration
 '''
 def update(frame_number):
     fig.clear()
@@ -122,7 +122,7 @@ def update(frame_number):
         matplotlib.pyplot.scatter(dogs[i].x,dogs[i].y, marker = "D", c = "black")
 
 '''
-  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx      
+Check whether stopping condition has been met      
 '''
 def gen_function(b = [0]):
     a = 0
