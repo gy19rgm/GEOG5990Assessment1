@@ -9,7 +9,7 @@ This model was created in Spyder (Anaconda3). The version of python is version i
 
 ### Repository Contents:
 1. **LICENSE**: GNU General Public License v3.0
-2. **Model.py:** Main agent based framework code
+2. **Model.py:** Main agent-based model code
 3. **agentframework.py**: code containing Agents (sheep) and Dogs class
 4. **in.txt:** text file containing values used in setting up the environment
 5. **README.md:** this file is the README.md file - it explains the contents of the GEOG5990Assessment1 folder
@@ -24,14 +24,18 @@ If using Spyder, the backend may need to be changed in order for matplotlib to r
 
 
 ## Running the model
-The model can be run from the  command prompt by navigating to the current working directory and typing 'python Model.py'.
+The model can be run from the command prompt by navigating to the current working directory and typing 'python Model.py'.
 
 Alternatively, the model can be run from within a programming software, such as Spyder.
 
-Once the GUI is visible, follow the instructions on the sliders and buttons to choose the number of agents (sheep) and sheepdogs, to set the animals up within the field environment and finally to run the model.
+Once the GUI is visible, follow the instructions on the sliders and buttons to 1. choose the number of agents (sheep), 2. choose the number of sheepdogs, 3. Set the animals up within the field environment and, 4. run the model.
 
 ### Expectations
-Upon opening the model, a blank GUI will appear. From here, the number of sheep and sheepdogs can be selected by adjusting the sliders. Button "3. Press here to set up the field" must be pressed in order for the model to retrieve the desired number of sheep and sheepdogs. Once button three has been pressed, the model can be run from either 'Run model' in the drop down menu or button "4. Watch the sheepdog herd the sheep!". The animation will end when either a. total number of iterations are reached or, b. all sheep's personal stores reach a pre-determined capacity.
+Upon opening the model, a blank GUI will appear. From here, the number of sheep and sheepdogs can be selected by adjusting the sliders. Button "3. Press here to set up the field" must be pressed in order for the model to retrieve the desired number of sheep and sheepdogs. Once button three has been pressed, the model can be run from either 'Run model' in the drop down menu or button "4. Watch the sheepdog herd the sheep!". 
+
+Once running, sheep will move randomly, eating 10 units of grass each iteration. Every move sheep will check whether they have  are other sheep nearby
+
+The animation will end when either a. total number of iterations are reached or, b. all sheep's personal stores reach a pre-determined capacity.
 
 ## Closing the model
 To close the model, the user can choose 'Close model' in the drop down menu or click the "Close the model" button. This must also be done to re-run the model, and then the model must be re-opened.
