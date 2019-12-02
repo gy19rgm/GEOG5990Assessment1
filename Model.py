@@ -147,7 +147,7 @@ Close Model
 '''
 def close():
     root.destroy()
-   
+    
 # Set up GUI
 root = tkinter.Tk()
 root.wm_title("Model")
