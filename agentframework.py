@@ -128,11 +128,12 @@ Sheepdog class
 class Dog(Agent):
     
     '''
-    @environment    environment from Model.py
-    @agents         list of agents from Model.py
-    @dogs           list of dogs from Model.py
-    @y              y value from HTML file opened in Model.py
-    @x              x value from HTML file opened in Model.py
+    Params:      
+        environment    environment from Model.py
+        agents         list of agents from Model.py
+        dogs           list of dogs from Model.py
+        y              y value from HTML file opened in Model.py
+        x              x value from HTML file opened in Model.py
     '''
     def __init__(self, environment, agents, dogs, y, x):
         super().__init__(environment, agents, dogs) # inherit from class Agent
