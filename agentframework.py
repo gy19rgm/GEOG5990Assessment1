@@ -3,9 +3,11 @@
 
 @author: gy19rgm, University of Leeds
 
+Project Version 1
+
 """
 
-# import statements
+# import libraries
 import random
 
 '''

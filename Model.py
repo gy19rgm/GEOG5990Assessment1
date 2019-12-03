@@ -3,6 +3,8 @@
 
 @author: gy19rgm, University of Leeds
 
+Project Version 1
+
 """
 
 # import libraries
@@ -62,8 +64,8 @@ def setup_agents():
     global num_of_dogs
     num_of_agents = slide1.get()
     num_of_dogs = slide2.get()
-    print('Total agents:', num_of_agents)
-    print('Total dogs:', num_of_dogs)
+    print('Total number of Agents (sheep):', num_of_agents)
+    print('Total number of sheepdogs:', num_of_dogs)
     
     # Make the sheep
     for i in range(num_of_agents):
@@ -95,7 +97,7 @@ def update(frame_number):
     # make the environment ('grass') grow each iteration     
     for i in range(300):
         for j in range(300):
-            environment[j][i] += 2
+            environment[j][i] += 1
     
     #print(len(agents), num_of_agents)
     for i in range(num_of_agents):
@@ -113,7 +115,7 @@ def update(frame_number):
         # stop before num_of_iterations if agents' stores are all greater than a value
         if agents[i].store > 1400:
             carry_on = False
-            print("stopping condition")
+#            print("stopping condition")
             
     for i in range(num_of_agents):
         matplotlib.pyplot.scatter(agents[i].x,agents[i].y, c = "white")
@@ -130,10 +132,10 @@ def gen_function(b = [0]):
     while (a < num_of_iterations) & (carry_on) :
         yield a # Returns control and waits next call
         a = a + 1
-    print("stopping iteration number:", a)
-    ## check final agent.store value
-    #for a in agents:
-    #    print("store:", a.store)
+    print("Stopping iteration number:", a)
+#    # check final agent.store value
+#    for a in agents:
+#        print("store:", a.store)
 
 '''
 Run Model
