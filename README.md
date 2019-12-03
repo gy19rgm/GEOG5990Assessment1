@@ -46,6 +46,12 @@ The animation will end when either a. total number of iterations are reached or,
 To close the model, the user can choose 'Close model' in the drop down menu or click the "Close the model" button. This must also be done if the user wants to re-run the model, and then the model must be re-opened.
 
 
+## Potential further development
+* Agents (sheep) could be allocated sexes to allow for a "multiply" function where lambs are 'born'
+* Wolves could be added and a "hunt" function created where they stalk and eat the sheep
+* Fences could be added into the enviornent to split it into multiple fields. Sheepdogs could then be programmed to herd all sheep into particular fields 
+
+
 ## Author
 R Martin, gy19rgm, University of Leeds
 
