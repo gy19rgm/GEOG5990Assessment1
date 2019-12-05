@@ -1,6 +1,8 @@
 ## GEOG5990Assessment1
 #### Repository of GEOG5990 Assessment 1 material
 
+Student No: 201369797
+
 This is an Agent-based Model in which sheep and sheepdogs interact within a 300 by 300 field environment, eating, sharing resources and running as they go.
 
 
@@ -34,16 +36,25 @@ Once the GUI is visible, follow the instructions on the sliders and buttons to 1
 Upon opening the model, a blank GUI will appear. From here, the number of sheep and sheepdogs can be selected by adjusting the sliders. Button "3. Press here to set up the field" must be pressed in order for the model to retrieve the desired number of sheep and sheepdogs. Upon setting up the field the number of agents (sheep) and sheepdogs determined will be printed in the console or the command window. Once button three has been pressed, the model can be run from either 'Run model' in the drop down menu or button "4. Watch the sheepdog herd the sheep!".
 
 Once the model is running, a collection of things happen every iteration:
-* sheep check whether there is a sheepdog within a defined neighbourhood. If there is, the sheep moves away from the sheepdog at a set distance each time. If there is no sheepdog closeby, sheep move a set distance, which is smaller than when running away from sheepdog, in a random direction
+* sheep (white circles) check whether there is a sheepdog within a defined neighbourhood. If there is, the sheep moves away from the sheepdog at a set distance each time. If there is no sheepdog closeby, sheep move a set distance, which is smaller than when running away from sheepdog, in a random direction
 * sheep eat 10 units of grass each iteration
 * sheep will  check whether there is another sheep within a defined neighbourhood. If there is, they will share their collected grass reserves equally between them
-* sheepdogs check whether there is a sheep within a defined neighbourhood, which is greater than the sheeps to represent better vision. If there is, the dog halves the distance between itself and the sheep - replicating a 'sprint' and 'stalk' motion. If there is not a sheep closeby, sheepdog move a set distance, which is further than a sheep's movement, in a random direction
+* sheepdogs (black diamonds) check whether there is a sheep within a defined neighbourhood, which is greater than the sheeps to represent better vision. If there is, the dog halves the distance between itself and the sheep - replicating a 'sprint' and 'stalk' motion. If there is not a sheep closeby, sheepdog move a set distance, which is further than a sheep's movement, in a random direction
 * the grass in the field environment grows by one unit
 
 The animation will end when either a. total number of iterations are reached or, b. all sheep's personal stores reach a pre-determined capacity. When the animation ends the stopping iteration number is printed in the console or the command window.
 
 ## Closing the model
 To close the model, the user can choose 'Close model' in the drop down menu or click the "Close the model" button. This must also be done if the user wants to re-run the model, and then the model must be re-opened.
+
+
+## Checks
+A collection of checks have been commented into the model. To make the checks, please uncomment them and re-rin the moedl.
+* line 30 - check xy values have been read from the HTML file
+* line 69 - print xy values of all sheep
+* line 72 - print sheep location from the point of view of a different sheep, to check they know about the location of other sheep
+* line 114 - print stopping condition to see if model is being terminated as expected
+* line 133 and 134 - pring agent store, to check whether total number of iterations or stopping condition is terminating the model
 
 
 ## Potential further development
@@ -58,3 +69,7 @@ R Martin, gy19rgm, University of Leeds
 
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the [License.md](https://github.com/gy19rgm/GEOG5990Assessment1/blob/master/LICENSE) file for further details
+
+
+## Acknowledgements
+This model was developed following [https://www.geog.leeds.ac.uk/courses/computing/study/core-python/]

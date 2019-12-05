@@ -29,10 +29,6 @@ td_xs = soup.find_all(attrs={"class": "x"})
 #print(td_ys)
 #print(td_xs)
 
-## check the agentframework is being called successfully 
-#a = agentframework.Agent()
-#print("Agent (y,x):", a.y, a.x)
-
 # open the field/environment data from in.txt file
 with open('in.txt', newline='') as f: # automatically closes due to indentation
     reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
@@ -70,17 +66,17 @@ def setup_agents():
     # Make the sheep
     for i in range(num_of_agents):
         agents.append(agentframework.Agent(environment, agents, dogs))           
-        #print('agents:', agents[i])
+#        print('agents:', agents[i])
         
 #    # check sheep can return info about a different sheep
-#    print(agents[1].agents[6].x)
+#    print('Agent 6 from agent 1 point of view', agents[1].agents[6].x)
 
     # Make the sheep dogs
     for i in range(num_of_dogs):
         y = int(td_ys[i].text)
         x = int(td_xs[i].text)
         dogs.append(agentframework.Dog(environment, agents, dogs, y, x))    
-        #print('dogs:', dogs[i])
+#        print('dogs:', dogs[i])
 
 carry_on = True
 
