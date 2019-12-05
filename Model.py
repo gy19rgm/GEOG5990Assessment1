@@ -19,15 +19,15 @@ import requests
 import tkinter
 
 
-# obtain data from HTML file and allocate to yx, variables
+# obtain data from HTML file and allocate to xy variables
 r = requests.get("https://www.geog.leeds.ac.uk/courses/computing/practicals/python/agent-framework/part9/data.html", verify=False)
 content = r.text
 soup = bs4.BeautifulSoup(content, 'html.parser')
 
 td_ys = soup.find_all(attrs={"class": "y"})
 td_xs = soup.find_all(attrs={"class": "x"})
-#print(td_ys)
-#print(td_xs)
+#print(str(td_ys[1]))
+#print(str(td_xs[1]))
 
 # open the field/environment data from in.txt file
 with open('in.txt', newline='') as f: # automatically closes due to indentation
@@ -52,10 +52,23 @@ num_of_agents = 10
 num_of_dogs = 2
 neighbourhood = 20 # distance sheep can see
 
-'''
-Set up Class Agent (sheep) and Class Dogs (sheepdogs) using values from GUI sliders
-'''
 def setup_agents():
+    '''
+    Function to set up Class Agent (sheep) and Class Dogs (sheepdogs) using values from GUI sliders
+    Initalise sheep and sheepdogs into the agentframework
+    
+    Params:
+        num_of_agents - global variable defining number of sheep updated by value on GUI slider
+        num_of_dogs - global variable defining number of sheepdogs updated by value on GUI slider
+        environment - grid of numbers describing the field environment
+        agents - list of sheep
+        dogs - list of sheepdogs
+        y - integer obtained from html file
+        x - integer obtained from html file
+
+    Returns:
+        print number of sheep and number of wolves, as selected on GUI slider
+    '''
     global num_of_agents
     global num_of_dogs
     num_of_agents = slide1.get()
@@ -80,10 +93,21 @@ def setup_agents():
 
 carry_on = True
 
-'''
-On each iteration
-'''
 def update(frame_number):
+    '''
+    Function to determine what is done during each iteration.
+    The function plots the environment, makes the grass environment grow and runs sheep and sheepdog behavious
+    
+    Params:
+        frame_number - the number of iterations
+        carry_on - boolean value which determines whether iterations continue
+        environment - grid of numbers describing the field environment
+        num_of_agents - the number of sheep
+        num_of_dogs - the number of sheepdogs
+        
+    Returns:
+        None
+    '''
     fig.clear()
     global carry_on
     matplotlib.pyplot.ylim(0, 300)
@@ -119,10 +143,19 @@ def update(frame_number):
     for i in range(num_of_dogs):
         matplotlib.pyplot.scatter(dogs[i].x,dogs[i].y, marker = "D", c = "black")
 
-'''
-Check whether stopping condition has been met      
-'''
 def gen_function(b = [0]):
+    '''
+    Check whether stopping condition has been met, and if so, terminate model
+    Stopping conditions are either number of iterations or a sheep's store becomes full 
+
+    Params:
+        num_of_iterations - total iterations defined at the start of the model
+        carry_on - boolean value which determines whether iterations continue
+        
+    Returns:
+        Prints stopping iteration number
+        If uncommented, can print the value of the store for all agents
+    '''
     a = 0
     global carry_on
     while (a < num_of_iterations) & (carry_on) :
@@ -131,19 +164,19 @@ def gen_function(b = [0]):
     print("Stopping iteration number:", a)
 #    # check final agent.store value
 #    for a in agents:
-#        print("store:", a.store)
+#        print("store" [i] ':', a.store)
 
-'''
-Run Model
-'''
 def run():
+    '''
+    Function to run the model in the form of an animation
+    '''
     animation = matplotlib.animation.FuncAnimation(fig, update, frames=gen_function, repeat=False)
     canvas.draw()
 
-'''
-Close Model
-'''
 def close():
+    '''
+    Function to close the model
+    '''
     root.destroy()
     
 # Set up GUI

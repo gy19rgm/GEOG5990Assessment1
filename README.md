@@ -50,11 +50,11 @@ To close the model, the user can choose 'Close model' in the drop down menu or c
 
 ## Checks
 A collection of checks have been commented into the model. To make the checks, please uncomment them and re-rin the moedl.
-* line 30 - check xy values have been read from the HTML file
-* line 69 - print xy values of all sheep
-* line 72 - print sheep location from the point of view of a different sheep, to check they know about the location of other sheep
-* line 114 - print stopping condition to see if model is being terminated as expected
-* line 133 and 134 - pring agent store, to check whether total number of iterations or stopping condition is terminating the model
+* lines 29 and 30 - check xy values have been read from the HTML file
+* line 82 - print xy values of all sheep
+* line 92 - print sheep location from the point of view of a different sheep, to check they know about the location of other sheep
+* line 138 - print stopping condition to see if model is being terminated as expected
+* lines 166 and 167 - pring agent store, to check whether total number of iterations or stopping condition is terminating the model
 
 
 ## Potential further development
