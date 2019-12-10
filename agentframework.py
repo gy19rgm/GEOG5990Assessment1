@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 
-@author: gy19rgm, University of Leeds
+Author: gy19rgm, University of Leeds
 
 Project Version 1
 
