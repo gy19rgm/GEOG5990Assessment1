@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 
-Author: gy19rgm, University of Leeds
+Author: gy19rgm, University of Leeds, 201369797
 
 Project Version 1
 
@@ -57,20 +57,11 @@ def setup_agents():
     Function to set up Class Agent (sheep) and Class Dogs (sheepdogs) using values from GUI sliders
     Initalise sheep and sheepdogs into the agentframework
     
-    Params:
-        num_of_agents - global variable defining number of sheep updated by value on GUI slider
-        num_of_dogs - global variable defining number of sheepdogs updated by value on GUI slider
-        environment - grid of numbers describing the field environment
-        agents - list of sheep
-        dogs - list of sheepdogs
-        y - integer obtained from html file
-        x - integer obtained from html file
-
     Returns:
-        print number of sheep and number of wolves, as selected on GUI slider
+        if uncommented, prints number of sheep and number of wolves, as selected on GUI slider
     '''
-    global num_of_agents
-    global num_of_dogs
+    global num_of_agents # global variable defining number of sheep updated by value on GUI slider
+    global num_of_dogs # global variable defining number of sheepdogs updated by value on GUI slider
     num_of_agents = slide1.get()
     num_of_dogs = slide2.get()
     print('Total number of Agents (sheep):', num_of_agents)
@@ -86,8 +77,8 @@ def setup_agents():
 
     # Make the sheep dogs
     for i in range(num_of_dogs):
-        y = int(td_ys[i].text)
-        x = int(td_xs[i].text)
+        y = int(td_ys[i].text) # integer obtained from html file
+        x = int(td_xs[i].text) # integer obtained from html file
         dogs.append(agentframework.Dog(environment, agents, dogs, y, x))    
 #        print('dogs:', dogs[i])
 
@@ -100,19 +91,12 @@ def update(frame_number):
     
     Params:
         frame_number - the number of iterations
-        carry_on - boolean value which determines whether iterations continue
-        environment - grid of numbers describing the field environment
-        num_of_agents - the number of sheep
-        num_of_dogs - the number of sheepdogs
-        
-    Returns:
-        None
     '''
     fig.clear()
-    global carry_on
+    global carry_on # global boolean value which determines whether iterations continue
     matplotlib.pyplot.ylim(0, 300)
     matplotlib.pyplot.xlim(300, 0)
-    matplotlib.pyplot.imshow(environment)
+    matplotlib.pyplot.imshow(environment) # grid of numbers describing the field environment
 
     # make the environment ('grass') grow each iteration     
     for i in range(300):
@@ -120,14 +104,14 @@ def update(frame_number):
             environment[j][i] += 1
     
     #print(len(agents), num_of_agents)
-    for i in range(num_of_agents):
+    for i in range(num_of_agents): # for each of the total number of sheep
         # call methods from agentframework.py 
         agents[i].check_field()
         agents[i].move()
         agents[i].eat()
         agents[i].share_with_neighbours(neighbourhood)
         
-    for i in range(num_of_dogs):
+    for i in range(num_of_dogs): # for each of the total number of sheepdogs
         # call methods from agentframework.py 
         dogs[i].check_vicinity()
         dogs[i].move()
@@ -143,22 +127,18 @@ def update(frame_number):
     for i in range(num_of_dogs):
         matplotlib.pyplot.scatter(dogs[i].x,dogs[i].y, marker = "D", c = "black")
 
-def gen_function(b = [0]):
+def gen_function():
     '''
     Check whether stopping condition has been met, and if so, terminate model
     Stopping conditions are either number of iterations or a sheep's store becomes full 
-
-    Params:
-        num_of_iterations - total iterations defined at the start of the model
-        carry_on - boolean value which determines whether iterations continue
         
     Returns:
         Prints stopping iteration number
-        If uncommented, can print the value of the store for all agents
+        If uncommented, prints the value of the store for all agents
     '''
     a = 0
-    global carry_on
-    while (a < num_of_iterations) & (carry_on) :
+    global carry_on # global boolean value which determines whether iterations continue
+    while (a < num_of_iterations) & (carry_on): # total iterations defined at the start of the model
         yield a # Returns control and waits next call
         a = a + 1
     print("Stopping iteration number:", a)

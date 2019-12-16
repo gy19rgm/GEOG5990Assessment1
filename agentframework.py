@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 
-Author: gy19rgm, University of Leeds
+Author: gy19rgm, University of Leeds, 201369797
 
 Project Version 1
 
@@ -20,31 +20,21 @@ class Agent():
         sheep the ability to know about the location of other sheep and all sheepdogs
         
         Params:
-            x - randomly generated variable
-            y - randomly generated variable
             environment - environment from Model.py
             agents - list of agents from Model.py
             dogs - list of dogs from Model.py
-            store - variable representing the food storage capacity of the sheep, initialised as zero
-            
-        Returns:
-            None
         ''' 
-        self.x = random.randint(0,299)
-        self.y = random.randint(0,299)
+        self.x = random.randint(0,299) # randomly generated variable
+        self.y = random.randint(0,299) # randomly generated variable
         self.environment = environment
         self.agents = agents 
         self.dogs = dogs
-        self.store = 0
+        self.store = 0 # variable representing the food storage capacity of the sheep, initialised as zero
         
     def __str__(self):
         '''
         Function that defines own values in string format
         
-        Params:
-            y - randomly generated variable
-            x - randomly generated variable
-            
         Returns:
             Values in string format
         '''
@@ -53,19 +43,14 @@ class Agent():
     def check_field(self):
         '''
         Function to check the field environment and return information about the closest sheepdog
-        
-        Params:
-            closest_dog - empty list to be filled with values of all dogs, which are then ordered
-            dogs - list of all dogs 
-            distance - distance between sheep and a dog, calculated and added to the closest_dog list
-            
+           
         Returns:
             Distance, x and y variables for the closest dog
         '''        
-        closest_dog = []
+        closest_dog = [] # empty list to be filled with values of all dogs
         
         for i in range(len(self.dogs)): # for self calculate distance of all dogs
-            distance = self.distance_between(self.dogs[i])
+            distance = self.distance_between(self.dogs[i]) # distance between sheep and a dog, calculated and added to the closest_dog list
             closest_dog.append([distance, self.dogs[i].x, self.dogs[i].y],)
         closest_dog.sort() # sort so smallest distance first
         
@@ -73,16 +58,10 @@ class Agent():
 
     def move(self):
         '''
-       Function to move away from a sheepdog or to move randomly
-       If a sheepdog is within sight then move away from it, else move randomly
-       
-       Params:
-           close - value returned from the check_field function
-           
-       Returns:
-           None
+        Function to move away from a sheepdog or to move randomly
+        If a sheepdog is within sight then move away from it, else move randomly
         '''        
-        close = self.check_field()
+        close = self.check_field() # value returned from the check_field function
     
         if close[0] < 20: # if closest dog is within 20
             
@@ -126,13 +105,6 @@ class Agent():
     def eat(self):
         '''
         Function to 'eat' grass, removing it from the field environment and adding it to personal store
-        
-        Params:
-            environment - environment from Model.py
-            store - variable representing the food storage capacity of the sheep
-            
-        Returns:
-            None        
         '''   
         if self.environment[self.y][self.x] > 10: # if grass has unit > 10
             self.environment[self.y][self.x] -= 10 # eat 10 units of grass
@@ -143,8 +115,7 @@ class Agent():
         Function to return distance between self and another sheep
         
         Params:
-            x - randomly generated variable
-            y- randomly generated variable
+           agent - list of sheep and information about each one
         
         Returns:
             Distance between self and another sheep
@@ -157,11 +128,9 @@ class Agent():
         
         Params:
             neighbourhood - neighbourhood variable defined in Model.py
-            agent - list of sheep
-            store - variable representing the food storage capacity of the sheep
-         
+        
         Returns:
-            Updated values for sheep's stores
+            Updated values for each sheep's stores
         '''
         self.neighbourhood = neighbourhood
         # Loop through the agents in self.agents
@@ -207,19 +176,14 @@ class Dog(Agent):
     def check_vicinity(self):
         '''
         Function to check the field environment and return information about the closest sheep
-        
-        Params:
-            closest_sheep - empty list to be filled with values of all sheep, which are then ordered
-            sheep - list of all dogs 
-            distance - distance between dog and a sheep, calculated and added to the closest_sheep list
-            
+
         Returns:
             Distance, x and y variables for the closest sheep
         '''
-        closest_sheep = []
+        closest_sheep = [] # empty list to be filled with values of all sheep
         
         for i in range(len(self.agents)): # for self calculate distance of all sheep
-            distance = self.distance_between(self.agents[i])
+            distance = self.distance_between(self.agents[i]) # distance between dog and a sheep, calculated and added to the closest_sheep list
             closest_sheep.append([distance, self.agents[i].x, self.agents[i].y],)
         closest_sheep.sort() # sort so smallest distance first
         
@@ -229,12 +193,8 @@ class Dog(Agent):
         '''
         Function to move towards a sheep or to move randomly
         If a sheep is within sight then move towards it, else move randomly
-        Params:
-            closest - value returned from the check_vicinity function
-        Returns:
-            None
         '''
-        closest = self.check_vicinity()
+        closest = self.check_vicinity() # value returned from the check_vicinity function
      
         if closest[0] < 30: # if sheep is within 30 
           
