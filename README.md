@@ -1,8 +1,6 @@
 ## GEOG5990Assessment1
 #### Repository of GEOG5990 Assessment 1 material
 
-Student No: 201369797
-
 This is an Agent-based Model in which sheep and sheepdogs interact within a 300 by 300 field environment, eating, sharing resources and running as they go.
 
 
@@ -20,7 +18,7 @@ This model was created in Spyder (Anaconda3). The version of python is version i
 Download the relevant files from this repository into your personal folder:
 * Model.py - main model which initiates the agent-based model animation using numbers obtained from the GUI
 * agentframework.py - agent framework which sets up the agents (sheep) and sheepdogs and their relevant behaviours
-* in.txt - text file containing integers used to set up the values of the field environment 
+* in.txt - text file containing integers used to set up the values of the field environment
 
 If using Spyder, the backend may need to be changed in order for matplotlib to render the graphics succesfully. This can be set in Spyder by selecting 'Tools' > 'Preferences' > 'IPython console' > 'Graphics' > adjust the backend drop-down list to read TkInter > OK > Restart Spyder
 
@@ -51,10 +49,11 @@ To close the model, the user can choose 'Close model' in the drop down menu or c
 ## Checks
 A collection of checks have been commented into the model. To make the checks, please uncomment them and re-rin the moedl.
 * lines 29 and 30 - check xy values have been read from the HTML file
-* line 82 - print xy values of all sheep
-* line 92 - print sheep location from the point of view of a different sheep, to check they know about the location of other sheep
-* line 138 - print stopping condition to see if model is being terminated as expected
-* lines 166 and 167 - pring agent store, to check whether total number of iterations or stopping condition is terminating the model
+* line 73 - print xy values of all sheep
+* line 76 - print sheep location from the point of view of a different sheep, to check they know about the location of other sheep
+* line 83 - print xy values of all dogs
+* line 122 - print stopping condition to see if model is being terminated as expected
+* lines 146 and 147 - print agent store, to check whether total number of iterations or stopping condition is terminating the model
 
 
 ## Potential further development
