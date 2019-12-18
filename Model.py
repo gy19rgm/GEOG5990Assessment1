@@ -47,7 +47,7 @@ ax = fig.add_axes([0, 0, 1, 1])
 
 agents = [] # list of agents
 dogs = [] # list of dogs
-num_of_iterations = 150
+num_of_iterations = 100
 num_of_agents = 10
 num_of_dogs = 2
 neighbourhood = 20 # distance sheep can see
@@ -117,7 +117,7 @@ def update(frame_number):
         dogs[i].move()
           
         # stop before num_of_iterations if agents' stores are all greater than a value
-        if agents[i].store > 1400:
+        if agents[i].store > 900:
             carry_on = False
 #            print("stopping condition")
             

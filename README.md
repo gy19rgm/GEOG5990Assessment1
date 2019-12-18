@@ -20,7 +20,7 @@ Download the relevant files from this repository into your personal folder:
 * agentframework.py - agent framework which sets up the agents (sheep) and sheepdogs and their relevant behaviours
 * in.txt - text file containing integers used to set up the values of the field environment
 
-If using Spyder, the backend may need to be changed in order for matplotlib to render the graphics succesfully. This can be set in Spyder by selecting 'Tools' > 'Preferences' > 'IPython console' > 'Graphics' > adjust the backend drop-down list to read TkInter > OK > Restart Spyder
+If using Spyder, the backend may need to be changed in order for matplotlib to render the graphics succesfully. This can be set in Spyder by selecting 'Tools' > 'Preferences' > 'IPython console' > 'Graphics' > adjust the backend drop-down list to read TkInter > Apply > OK > Restart Spyder
 
 
 ## Running the model
