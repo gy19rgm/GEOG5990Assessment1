@@ -160,7 +160,7 @@ class Dog(Agent):
             y - y value from HTML file opened in Model.py, if no value is found one is assigned randomly
             x - x value from HTML file opened in Model.py, if no value is found one is assigned randomly
         '''
-        super().__init__(environment, agents, dogs)
+        super().__init__(environment, agents, dogs) # inherit environment, agents and dogs from class Agent
         
         self.y = y 
         self.x = x
